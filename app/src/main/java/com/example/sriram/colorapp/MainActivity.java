@@ -30,8 +30,24 @@ public class MainActivity extends AppCompatActivity {
 
         view.setBackgroundColor(Color.rgb(ir,jr,kr));
         textView=(TextView) findViewById(R.id.textView);
+        textView.setTextColor(Color.rgb(100,100,100));
+        textView.setText("red:"+String.valueOf(ir)+"   green:"+String.valueOf(jr)+"  blue:"+String.valueOf(kr));
     }
 
+    public void reset(View v){
+        SharedPreferences sharedPref=getSharedPreferences("bginfo",0);
+        SharedPreferences.Editor editor=sharedPref.edit();
+        i=0;
+        j=0;
+        k=0;
+
+        view.setBackgroundColor(Color.rgb(i, j, k));
+        textView.setText("red:"+String.valueOf(i)+"   green:"+String.valueOf(j)+"  blue:"+String.valueOf(k));
+        editor.putInt("bgr",i);
+        editor.putInt("bgg",j);
+        editor.putInt("bgb",k);
+        editor.apply();
+    }
 
     public void chred(View v) {
         SharedPreferences sharedPref=getSharedPreferences("bginfo",0);
